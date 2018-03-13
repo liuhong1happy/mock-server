@@ -11,10 +11,6 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var _watch = require('watch');
-
-var _watch2 = _interopRequireDefault(_watch);
-
 var _assert = require('assert');
 
 var _assert2 = _interopRequireDefault(_assert);
@@ -59,19 +55,9 @@ var getConfig = function getConfig() {
     var config = {};
     // 路由配置
     config.routeTable = routeTable;
-    // 监听路径
-    config.mockDir = _path2.default.resolve(root_path, packageJson.mockConfig.mockDir || 'mock');
     // 监听端口
-    config.serverPort = config.serverPort || 9000;
+    config.serverPort = packageJson.mockConfig.serverPort || 9000;
     return config;
-};
-
-// 监听文件变化
-var watchDir = function watchDir(watch_directory, onChange) {
-    _watch2.default.watchTree(watch_directory, function (f, current, previous) {
-        if (current == previous) return;
-        onChange(getConfig().routeTable);
-    });
 };
 
 var router = [];
@@ -117,7 +103,7 @@ var parseConfig = function parseConfig(config, app) {
         switch (route.type) {
             case 'handler':
                 route.hanlder = function (req, res, next) {
-                    if (req.method.toLowerCase() !== route.method.toLowerCase()) {
+                    if (req.method.toLowerCase() === route.method.toLowerCase()) {
                         route.value(req, res);
                     } else {
                         next();
@@ -153,10 +139,6 @@ var parseConfig = function parseConfig(config, app) {
 
 var start = exports.start = function start(app) {
     var config = getConfig();
-    // 监听文件夹
-    watchDir(config.mockDir, function (_config) {
-        return parseConfig(_config, app);
-    });
     // 解析配置
     parseConfig(config, app);
     // 开启服务
