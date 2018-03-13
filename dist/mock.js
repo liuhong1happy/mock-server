@@ -25,6 +25,8 @@ var _fs2 = _interopRequireDefault(_fs);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var proxy = _httpProxy2.default.createProxyServer({});
+
 var parseKey = function parseKey(key) {
     var method = 'get';
     var path = key;
@@ -124,7 +126,7 @@ var parseConfig = function parseConfig(config, app) {
             case 'proxy':
                 route.hanlder = function (req, res, next) {
                     if (req.method.toLowerCase() === route.method.toLowerCase()) {
-                        _httpProxy2.default.web(req, res, {
+                        proxy.web(req, res, {
                             target: route.value
                         });
                     } else {
