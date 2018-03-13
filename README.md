@@ -19,7 +19,7 @@
 
     {
         "plugins": [
-        "transform-decorators-legacy"
+            "transform-decorators-legacy"
         ],
         "presets": ["env"]
     }
@@ -27,13 +27,13 @@
 ## 启动参数  `package.json`
 
     {
-    // ...
-    "mock": "nodemon mock-server.js --exec babel-node",
-    "mockConfig": {
-        "mockDir": "mock",
-        "serverPort": "9000"
-    }
-    // ...
+        // ...
+        "mock": "nodemon mock-server.js --exec babel-node",
+        "mockConfig": {
+            "mockDir": "mock",
+            "serverPort": "9000"
+        }
+        // ...
     }
 
 ## 配置请求 `config.mock.js`

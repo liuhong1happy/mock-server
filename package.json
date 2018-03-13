@@ -1,15 +1,16 @@
 {
   "name": "similar-server-mock-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "mock server",
-  "main": "index.js",
+  "main": "dist/index.js",
   "files": [
-    "mock.js",
-    "index.js"
+    "dist/mock.js",
+    "dist/index.js"
   ],
   "scripts": {
     "test": "test",
-    "start": "nodemon index.js --exec babel-node"
+    "start": "nodemon index.js --exec babel-node",
+    "build": "babel lib -d dist"
   },
   "repository": {
     "type": "git",
