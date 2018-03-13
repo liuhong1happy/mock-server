@@ -42,7 +42,6 @@
     "webpack": "^2.6.0"
   },
   "mockConfig": {
-    "mockDir": "mock",
     "serverPort": "9000"
   }
 }
