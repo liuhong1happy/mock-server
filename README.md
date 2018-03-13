@@ -2,18 +2,18 @@
 
 ## 安装
 
-npm install --save similar-server-mock-server
+    npm install --save similar-server-mock-server
 
 ## 使用 `mock-start.js`
 
-import 'similar-server-mock-server';
+    import 'similar-server-mock-server';
 
-或者
+    // 或者
 
-import { Application } from 'similar-server';
-import mock = 'similar-server-mock-server/mock';
+    import { Application } from 'similar-server';
+    import mock from 'similar-server-mock-server/mock';
 
-mock.start(Application());
+    mock.start(Application());
 
 ## 配置文件 `.babelrc`
 
@@ -28,6 +28,7 @@ mock.start(Application());
 
     {
     // ...
+    "mock": "nodemon mock-server.js --exec babel-node",
     "mockConfig": {
         "mockDir": "mock",
         "serverPort": "9000"
@@ -48,6 +49,10 @@ mock.start(Application());
         'POST /api/users/create': (req, res) => { res.end('OK'); },
     };
 
+## 安装启动依赖
+
+    npm install --save-dev nodemon babel-cli babel-plugin-transform-decorators-legacy babel-preset-env
+
 ## 启动
 
-babel-node mock-start.js
+    babel-node mock-start.js
