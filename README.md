@@ -10,10 +10,10 @@
 
     // 或者
 
-    import { Application } from 'similar-server';
-    import mock from 'similar-server-mock-server/mock';
+    import { Application } from 'similar-server'; 
+    import { start } from 'similar-server-mock-server/dist/mock';
 
-    mock.start(Application());
+    start(Application());
 
 ## 配置文件 `.babelrc`
 
@@ -56,3 +56,5 @@
 ## 启动
 
     babel-node mock-start.js
+    // 或者
+    nodemon mock-server.js --exec babel-node
